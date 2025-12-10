@@ -6,7 +6,7 @@
 #    By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/10 15:45:58 by mdamouh           #+#    #+#              #
-#    Updated: 2025/12/10 16:21:24 by mdamouh          ###   ########.fr        #
+#    Updated: 2025/12/10 16:58:38 by mdamouh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,13 +17,13 @@ SRCS = push_swap.c
 PRINTF = ./ft_printf/libftprintf.a
 LIBFT = ./libft/libft.a
 
-all: $(PRINTF) $(LIBFT) $(NAME)
+all: $(NAME)
 
 $(PRINTF):
 	@make -s -C ./ft_printf
 $(LIBFT):
 	@make -s -C ./libft
-$(NAME): $(SRCS)
+$(NAME): $(SRCS) $(PRINTF) $(LIBFT)
 	$(CC) $(CFLAGS) $(SRCS) $(PRINTF) $(LIBFT) -o $(NAME)
 
 clean:
