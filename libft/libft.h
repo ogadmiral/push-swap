@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 23:36:47 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/10/29 11:14:38 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/19 15:09:48 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 
 typedef struct s_list
 {
-	void			*content;
+	void			*value;
 	struct s_list	*next;
-}	t_list;
+}	t_stack;
 
 // Part 1
 int		ft_isalpha(int c);
@@ -59,14 +59,14 @@ void	ft_putnbr_fd(int n, int fd);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 // Bonus
-t_list	*ft_lstnew(void *content);
-void	ft_lstadd_front(t_list **lst, t_list *new);
-int		ft_lstsize(t_list *lst);
-t_list	*ft_lstlast(t_list *lst);
-void	ft_lstadd_back(t_list **lst, t_list *new);
-void	ft_lstdelone(t_list *lst, void (*del)(void*));
-void	ft_lstclear(t_list **lst, void (*del)(void*));
-void	ft_lstiter(t_list *lst, void (*f)(void *));
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+t_stack	*ft_lstnew(void *value);
+void	ft_lstadd_front(t_stack **lst, t_stack *new);
+int		ft_lstsize(t_stack *lst);
+t_stack	*ft_lstlast(t_stack *lst);
+void	ft_lstadd_back(t_stack **lst, t_stack *new);
+void	ft_lstdelone(t_stack *lst, void (*del)(void*));
+void	ft_lstclear(t_stack **lst, void (*del)(void*));
+void	ft_lstiter(t_stack *lst, void (*f)(void *));
+t_stack	*ft_lstmap(t_stack *lst, void *(*f)(void *), void (*del)(void *));
 
 #endif

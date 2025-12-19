@@ -6,7 +6,7 @@
 #    By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/10 15:45:58 by mdamouh           #+#    #+#              #
-#    Updated: 2025/12/10 16:58:38 by mdamouh          ###   ########.fr        #
+#    Updated: 2025/12/18 09:44:13 by mdamouh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,19 +20,19 @@ LIBFT = ./libft/libft.a
 all: $(NAME)
 
 $(PRINTF):
-	@make -s -C ./ft_printf
+	make -C ./ft_printf
 $(LIBFT):
-	@make -s -C ./libft
+	make -C ./libft
 $(NAME): $(SRCS) $(PRINTF) $(LIBFT)
 	$(CC) $(CFLAGS) $(SRCS) $(PRINTF) $(LIBFT) -o $(NAME)
 
 clean:
-	@make -s clean -C ft_printf
-	@make -s clean -C libft
+	make clean -C ft_printf
+	make clean -C libft
 
 fclean:
-	@make -s fclean -C ft_printf
-	@make -s fclean -C libft
+	make fclean -C ft_printf
+	make fclean -C libft
 	rm push_swap
 
 re: fclean all

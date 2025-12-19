@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
+/*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/27 18:38:35 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/19 15:08:00 by mdamouh          ###   ########.fr       */
+/*   Created: 2025/12/19 10:11:14 by mdamouh           #+#    #+#             */
+/*   Updated: 2025/12/19 10:15:02 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	ft_lstadd_front(t_stack **lst, t_stack *new)
+void	sa(t_stack **stack)
 {
-	t_stack	*tmp;
+	t_stack	*first;
+	t_stack	*second;
 
-	if (!lst || !new)
-		return ;
-	tmp = *lst;
-	*lst = new;
-	new->next = tmp;
+	first = (*stack);
+	second = (*stack)->next;
+	first->next = second->next;
+	second->next = first;
+	(*stack) = second;
 }
