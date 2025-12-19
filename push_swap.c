@@ -6,13 +6,13 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 15:46:26 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/19 10:15:42 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/19 16:07:41 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int main(void)
+int	main(void)
 {
-	
+	printf("Hello\n");
 }

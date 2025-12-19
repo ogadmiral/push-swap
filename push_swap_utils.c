@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 10:11:14 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/19 16:04:25 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/19 16:05:56 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	pa(t_stack **stackb, t_stack **stacka)
 	headb = *stackb;
 	heada = *stacka;
 	if (!headb)
-		return;
+		return ;
 	secondb = (*stackb)->next;
 	headb->next = heada;
 	*stacka = headb;
@@ -71,7 +71,7 @@ void	pb(t_stack **stacka, t_stack **stackb)
 	heada = *stacka;
 	headb = *stackb;
 	if (!heada)
-		return;
+		return ;
 	seconda = (*stacka)->next;
 	heada->next = headb;
 	*stackb = heada;
