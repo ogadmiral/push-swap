@@ -6,7 +6,7 @@
 #    By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/10 15:45:58 by mdamouh           #+#    #+#              #
-#    Updated: 2025/12/19 15:17:58 by mdamouh          ###   ########.fr        #
+#    Updated: 2025/12/21 15:52:11 by mdamouh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ all: $(NAME)
 $(PRINTF):
 	make -C ./ft_printf
 $(LIBFT):
-	make -C ./libft
+	make bonus -C ./libft
 $(NAME): $(SRCS) $(PRINTF) $(LIBFT)
 	$(CC) $(CFLAGS) $(SRCS) $(PRINTF) $(LIBFT) -o $(NAME)
 
