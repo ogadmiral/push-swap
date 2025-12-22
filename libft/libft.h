@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 23:36:47 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/19 15:09:48 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/22 21:41:20 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 typedef struct s_list
 {
-	void			*value;
+	int				value;
 	struct s_list	*next;
 }	t_stack;
 
@@ -59,7 +59,7 @@ void	ft_putnbr_fd(int n, int fd);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 // Bonus
-t_stack	*ft_lstnew(void *value);
+t_stack	*ft_lstnew(int	value);
 void	ft_lstadd_front(t_stack **lst, t_stack *new);
 int		ft_lstsize(t_stack *lst);
 t_stack	*ft_lstlast(t_stack *lst);

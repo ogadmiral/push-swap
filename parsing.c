@@ -6,36 +6,70 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 17:43:31 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/22 18:35:43 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/22 21:42:38 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_parse(int ac, char **av)
-{
-	t_stack	
-	if (ac == 2)
-	{
-		
-	}
-}
-
-void	ft_single(char	*av)
+t_stack	*ft_stack(char	**array)
 {
 	int	i;
-	char	**stack;
+	int	value;
+	int	time;
+	t_stack	*head;
+	t_stack	*node;
+	
+	i = 0;
+	time = 1;
+	while (array[i])
+	{
+		value = to_int(array[i]);
+		if (time == 1)
+		{
+			head = ft_lstnew(value);
+			time = 0;
+		}
+		else
+		{
+			node = ft_lstnew(value);
+			ft_lstadd_back(&head, node);
+		}
+		i++;
+	}
+	return (head);
+}
+
+t_stack	*ft_single(char	*av)
+{
+	int	i;
+	char	**array;
+	t_stack	*stack;
 
 	i = 0;
 	while (av[i])
 	{
-		if (!(av[i] < '9' && av[i] > '0') || !(av[i] > 9 && av[i] < 13) || av[i] != 32)
+		if ((av[i] <= '9' && av[i] >= '0') || (av[i] > 9 && av[i] < 13) || av[i] == 32)
+			i++;
+		else
 		{
 			ft_printf("Error\n");
-			return ;
+			return (NULL);
 		}
-		else
-			i++;
 	}
-	stack = ft_split(av, ' ');
+	array = ft_split(av, ' ');
+	stack = ft_stack(array);
+	return (stack);
+}
+
+t_stack	*ft_parse(int ac, char **av)
+{
+	t_stack	*stacka;
+	if (ac == 2)
+	{
+		stacka = ft_single(av[1]);
+	}
+	else
+		stacka = NULL;
+	return (stacka);
 }

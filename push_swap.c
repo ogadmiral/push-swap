@@ -6,22 +6,22 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 15:46:26 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/21 17:39:30 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/22 21:40:27 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// void	ft_printlst(t_stack *stack, char c)
-// {
-// 	t_stack *head = stack;
-// 	ft_printf("Stack %c: \n", c);
-// 	while(head)
-// 	{
-// 		ft_printf("%d\n", *((int *)(head->value)));
-// 		head = head->next;
-// 	}
-// }
+void	ft_printlst(t_stack *stack, char c)
+{
+	t_stack *head = stack;
+	ft_printf("Stack %c: \n", c);
+	while(head)
+	{
+		ft_printf("%d\n", head->value);
+		head = head->next;
+	}
+}
 
 // int main(void)
 // {
@@ -54,5 +54,10 @@
 #include <stdio.h>
 int main(int ac, char **av)
 {
-	
+	t_stack	*stack;
+
+	stack = ft_parse(ac, av);
+	ft_printlst(stack, 'a');
+
+	return (0);
 }

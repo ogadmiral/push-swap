@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 15:57:06 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/21 15:59:56 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/22 21:21:34 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,15 @@ void	rb(t_stack **stack)
 	*stack = second;
 	ft_lstadd_back(stack, head);
 	ft_printf("rb\n");
+}
+
+int to_int(const char *s) {
+    int value;
+
+	value = 0;
+    while (*s) {
+        value = value * 10 + (*s - '0');
+        s++;
+    }
+    return (value);
 }

@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 15:47:17 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/21 15:28:43 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/22 21:22:41 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,7 @@ void	pb(t_stack **stacka, t_stack **stackb);
 void	ra(t_stack **stack);
 void	rb(t_stack **stack);
 void	rr(t_stack **stack);
+int		to_int(const char *s);
+t_stack	*ft_parse(int ac, char **av);
+
 #endif
