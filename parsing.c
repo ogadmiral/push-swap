@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 17:43:31 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/22 21:42:38 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/23 11:07:31 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,31 @@ t_stack	*ft_stack(char	**array)
 	return (head);
 }
 
+int	is_repeated(t_stack *stack)
+{
+	int	old_value;
+	int	is_first;
+
+	is_first = 1;
+	while (stack)
+	{
+		if (is_first && stack->next)
+		{
+			old_value = stack->value;
+			stack = stack->next;
+			is_first = 0;
+		}
+		else
+		{
+			if (old_value == stack->value)
+				return (0);
+			old_value = stack->value;
+			stack = stack->next;
+		}
+	}
+	return (1);
+}
+
 t_stack	*ft_single(char	*av)
 {
 	int	i;
@@ -52,23 +77,21 @@ t_stack	*ft_single(char	*av)
 		if ((av[i] <= '9' && av[i] >= '0') || (av[i] > 9 && av[i] < 13) || av[i] == 32)
 			i++;
 		else
-		{
-			ft_printf("Error\n");
 			return (NULL);
-		}
 	}
 	array = ft_split(av, ' ');
 	stack = ft_stack(array);
+	if (!is_repeated(stack))
+		return (NULL);
 	return (stack);
 }
 
 t_stack	*ft_parse(int ac, char **av)
 {
 	t_stack	*stacka;
+
 	if (ac == 2)
-	{
 		stacka = ft_single(av[1]);
-	}
 	else
 		stacka = NULL;
 	return (stacka);

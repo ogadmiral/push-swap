@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 15:46:26 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/22 21:40:27 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/23 11:03:03 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ int main(int ac, char **av)
 	t_stack	*stack;
 
 	stack = ft_parse(ac, av);
+	if (!stack)
+		return (ft_printf("Error\n"), 0);
 	ft_printlst(stack, 'a');
 
 	return (0);
