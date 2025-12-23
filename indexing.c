@@ -6,8 +6,21 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 11:08:19 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/23 11:20:35 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/23 11:36:33 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	ft_lenlst(t_stack *lst)
+{
+	int	i;
+
+	i = 0;
+	while (lst)
+	{
+		i++;
+		lst = lst->next;
+	}
+	return (i);
+}
