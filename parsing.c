@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 17:43:31 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/23 11:07:31 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/23 11:18:18 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 t_stack	*ft_stack(char	**array)
 {
-	int	i;
-	int	value;
-	int	time;
+	int		i;
+	int		value;
+	int		time;
 	t_stack	*head;
 	t_stack	*node;
-	
+
 	i = 0;
 	time = 1;
 	while (array[i])
@@ -67,14 +67,15 @@ int	is_repeated(t_stack *stack)
 
 t_stack	*ft_single(char	*av)
 {
-	int	i;
+	int		i;
 	char	**array;
 	t_stack	*stack;
 
 	i = 0;
 	while (av[i])
 	{
-		if ((av[i] <= '9' && av[i] >= '0') || (av[i] > 9 && av[i] < 13) || av[i] == 32)
+		if ((av[i] <= '9' && av[i] >= '0') || (av[i] > 9 && av[i] < 13)
+			|| av[i] == 32)
 			i++;
 		else
 			return (NULL);
