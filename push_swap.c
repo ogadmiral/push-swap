@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 15:46:26 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/23 11:03:03 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/23 13:25:34 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,16 @@ void	ft_printlst(t_stack *stack, char c)
 	}
 }
 
+void	ft_printindex(t_stack *stack, char c)
+{
+	t_stack *head = stack;
+	ft_printf("Stack %c: \n", c);
+	while(head)
+	{
+		ft_printf("%d\n", head->index);
+		head = head->next;
+	}
+}
 // int main(void)
 // {
 // 	int a = 2, b=1, c=3, d=6, e=5, j=8;
@@ -55,11 +65,17 @@ void	ft_printlst(t_stack *stack, char c)
 int main(int ac, char **av)
 {
 	t_stack	*stack;
+	int	size;
+	int	*sortedarr;
 
 	stack = ft_parse(ac, av);
+	size = ft_lenlst(stack);
 	if (!stack)
 		return (ft_printf("Error\n"), 0);
 	ft_printlst(stack, 'a');
-
+	ft_printf("After indexing: \n");
+	sortedarr = stack_to_sorted_array(stack, size);
+	indexing(&stack, sortedarr, size);
+	ft_printindex(stack, 'a');
 	return (0);
 }
