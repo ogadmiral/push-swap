@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 15:46:26 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/24 18:21:08 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/24 18:45:33 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,35 +33,42 @@ void	ft_printindex(t_stack *stack, char c)
 		head = head->next;
 	}
 }
-// int main(void)
-// {
-// 	int a = 2, b=1, c=3, d=6, e=5, j=8;
-// 	t_stack *node1 = ft_lstnew(&a);
-// 	t_stack *node2 = ft_lstnew(&b);
-// 	t_stack *node3 = ft_lstnew(&c);
-// 	t_stack *node4 = ft_lstnew(&d);
-// 	t_stack *node5 = ft_lstnew(&e);
-// 	t_stack *node6 = ft_lstnew(&j);
-// 	t_stack *node1b = NULL;
-// 	node1->next = node2;
-// 	node2->next = node3;
-// 	node3->next = node4;
-// 	node4->next = node5;
-// 	node5->next = node6;
-// 	ft_printlst(node1, 'a');
-// 	sa(&node1);
-// 	ft_printlst(node1, 'a');
-// 	pb(&node1, &node1b);
-// 	pb(&node1, &node1b);
-// 	pb(&node1, &node1b);
-// 	ft_printlst(node1, 'a');
-// 	ft_printlst(node1b, 'b');
-// 	ra(&node1);
-// 	rb(&node1b);
-// 	ft_printlst(node1, 'a');
-// 	ft_printlst(node1b, 'b');
-// }
+
 #include <stdio.h>
+int	find_nearest_pos(t_stack *stack, int size, int start, int end)
+{
+	int	pos;
+	int	best_pos;
+	int	best_cost;
+	int	cost_up;
+	int	cost_down;
+
+	pos = 0;
+	best_cost = size + 1;
+	while (stack)
+	{
+		if (stack->index >= start && stack->index <= end)
+		{
+			cost_up = pos;
+			cost_down = size - pos;
+			if (cost_up <= cost_down && cost_up < best_cost)
+			{
+				best_cost = cost_up;
+				best_pos = pos;
+			}
+			else if (cost_down < cost_up && cost_down < best_cost)
+			{
+				best_cost = cost_down;
+				best_pos = -pos;
+			}
+		}
+		stack = stack->next;
+		pos++;
+	}
+	if (best_cost == size + 1)
+		return (0);
+	return (best_pos);
+}
 
 int	is_inrange(t_stack *stack, int start, int end)
 {
@@ -81,6 +88,7 @@ void	ft_sort(int **chunks, int size, t_stack **stacka, t_stack **stackb)
 	int	end;
 	int	i;
 	int	j;
+	int	pos;
 
 	chunk_size = get_chunk_size(size);
 	start = 0;
@@ -93,17 +101,16 @@ void	ft_sort(int **chunks, int size, t_stack **stacka, t_stack **stackb)
 		j = 0;
 		while (j <= end - start)
 		{
-			if ((*stacka)->index >= start && (*stacka)->index <= end)
-			{
-				pb(stacka, stackb);
-				j++;
-			}
+			pos = find_nearest_pos(*stacka, ft_lenlst(*stacka), start, end);
+			if (pos == 0)
+				break;
+			if (pos > 0)
+				while (pos--)
+					ra(stacka);
 			else
-			{
-				if (!is_inrange(*stacka, start, end))
-					break;
-				ra(stacka);
-			}
+				while (pos++)
+					rra(stacka);
+			pb(stacka, stackb);
 		}
 		start += chunk_size;
 		i++;

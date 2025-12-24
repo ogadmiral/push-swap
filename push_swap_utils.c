@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 10:11:14 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/21 16:00:02 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/24 18:46:42 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,24 @@ void	rr(t_stack **stack)
 	ra(stack);
 	rb(stack);
 	ft_printf("rr\n");
+}
+
+void	rra(t_stack **stack)
+{
+	t_stack	*prev;
+	t_stack	*last;
+
+	if (!(*stack) || !(*stack)->next)
+		return ;
+	prev = NULL;
+	last = *stack;
+	while (last->next)
+	{
+		prev = last;
+		last = last->next;
+	}
+	prev->next = NULL;
+	last->next = *stack;
+	*stack = last;
+	ft_printf("rra\n");
 }
