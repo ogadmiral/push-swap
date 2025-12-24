@@ -6,14 +6,14 @@
 #    By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/10 15:45:58 by mdamouh           #+#    #+#              #
-#    Updated: 2025/12/23 11:50:34 by mdamouh          ###   ########.fr        #
+#    Updated: 2025/12/24 10:00:02 by mdamouh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
-SRCS = push_swap.c push_swap_utils.c push_swap_utils_b.c parsing.c indexing.c
+SRCS = push_swap.c push_swap_utils.c push_swap_utils_b.c parsing.c indexing.c chunking.c
 PRINTF = ./ft_printf/libftprintf.a
 LIBFT = ./libft/libft.a
 

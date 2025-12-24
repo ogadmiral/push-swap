@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 15:47:17 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/23 13:21:31 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/24 10:16:38 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,7 @@ t_stack	*ft_parse(int ac, char **av);
 int	*stack_to_sorted_array(t_stack *stack, int size);
 int	ft_lenlst(t_stack *lst);
 void	indexing(t_stack **stack, int	*sorted, int size);
+int	**split_into_chunks(int size);
+int	get_chunk_size(int size);
 
 #endif

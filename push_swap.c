@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 15:46:26 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/23 13:25:34 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/24 10:42:40 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,42 @@ void	ft_printindex(t_stack *stack, char c)
 // 	ft_printlst(node1b, 'b');
 // }
 #include <stdio.h>
+void	print_chunks(int **chunks, int size)
+{
+	int	chunk_size;
+	int	start;
+	int	end;
+	int	i;
+	int	j;
+
+	chunk_size = get_chunk_size(size);
+	start = 0;
+	i = 0;
+	while (chunks[i])
+	{
+		end = start + chunk_size - 1;
+		if (end >= size)
+			end = size - 1;
+		ft_printf("Chunk %d: ", i);
+		j = 0;
+		while (j <= end - start)
+		{
+			ft_printf("%d ", chunks[i][j]);
+			j++;
+		}
+		ft_printf("\n");
+		start += chunk_size;
+		i++;
+	}
+}
+
+
 int main(int ac, char **av)
 {
 	t_stack	*stack;
 	int	size;
 	int	*sortedarr;
+	int	**chunks;
 
 	stack = ft_parse(ac, av);
 	size = ft_lenlst(stack);
@@ -77,5 +108,7 @@ int main(int ac, char **av)
 	sortedarr = stack_to_sorted_array(stack, size);
 	indexing(&stack, sortedarr, size);
 	ft_printindex(stack, 'a');
+	chunks = split_into_chunks(size);
+	print_chunks(chunks, size);
 	return (0);
 }
