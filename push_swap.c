@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 15:46:26 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/24 10:42:40 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/24 11:55:11 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	ft_printindex(t_stack *stack, char c)
 // 	ft_printlst(node1b, 'b');
 // }
 #include <stdio.h>
-void	print_chunks(int **chunks, int size)
+void	ft_sort(int **chunks, int size, t_stack **stacka, t_stack **stackb)
 {
 	int	chunk_size;
 	int	start;
@@ -78,19 +78,55 @@ void	print_chunks(int **chunks, int size)
 		end = start + chunk_size - 1;
 		if (end >= size)
 			end = size - 1;
-		ft_printf("Chunk %d: ", i);
 		j = 0;
 		while (j <= end - start)
 		{
-			ft_printf("%d ", chunks[i][j]);
-			j++;
+			if ((*stacka)->index >= start && (*stacka)->index <= end)
+			{
+				pb(stacka, stackb);
+				j++;
+			}
+			else
+				ra(stacka);
 		}
-		ft_printf("\n");
 		start += chunk_size;
 		i++;
 	}
 }
 
+int	ft_getmax(t_stack	*stack)
+{
+	int	max;
+	int	is_first;
+
+	is_first = 1;
+	while (stack)
+	{
+		if (is_first)
+		{
+			max = stack->index;
+			is_first = 0;
+		}
+		if (stack->index > max)
+			max = stack->index;
+		stack = stack->next;
+	}
+	return (max);
+}
+
+void	rebuildfrom_b(t_stack	**stacka, t_stack	**stackb)
+{
+	int	max;
+
+	while (*stackb)
+	{
+		max = ft_getmax(*stackb);
+		if ((*stackb)->index == max)
+			pa(stackb, stacka);
+		else
+			rb(stackb);
+	}
+}
 
 int main(int ac, char **av)
 {
@@ -98,17 +134,16 @@ int main(int ac, char **av)
 	int	size;
 	int	*sortedarr;
 	int	**chunks;
+	t_stack	*stackb;
 
 	stack = ft_parse(ac, av);
 	size = ft_lenlst(stack);
 	if (!stack)
 		return (ft_printf("Error\n"), 0);
-	ft_printlst(stack, 'a');
-	ft_printf("After indexing: \n");
 	sortedarr = stack_to_sorted_array(stack, size);
 	indexing(&stack, sortedarr, size);
-	ft_printindex(stack, 'a');
 	chunks = split_into_chunks(size);
-	print_chunks(chunks, size);
+	ft_sort(chunks, size, &stack, &stackb);
+	rebuildfrom_b(&stack, &stackb);
 	return (0);
 }
