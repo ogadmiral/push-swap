@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 15:46:26 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/24 11:55:11 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/24 18:21:08 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,18 @@ void	ft_printindex(t_stack *stack, char c)
 // 	ft_printlst(node1b, 'b');
 // }
 #include <stdio.h>
+
+int	is_inrange(t_stack *stack, int start, int end)
+{
+	while (stack)
+	{
+		if (stack->index >= start && stack->index <= end)
+			return (1);
+		stack = stack->next;
+	}
+	return (0);
+}
+
 void	ft_sort(int **chunks, int size, t_stack **stacka, t_stack **stackb)
 {
 	int	chunk_size;
@@ -87,7 +99,11 @@ void	ft_sort(int **chunks, int size, t_stack **stacka, t_stack **stackb)
 				j++;
 			}
 			else
+			{
+				if (!is_inrange(*stacka, start, end))
+					break;
 				ra(stacka);
+			}
 		}
 		start += chunk_size;
 		i++;
