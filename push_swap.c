@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 15:46:26 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/26 15:12:56 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/26 18:04:34 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,57 @@ int	get_position(t_stack	*stack, int index)
 	return (pos);
 }
 
-void	ft_buildb(t_stack	**stacka, t_stack	**stackb, int	**chunks)
+int	get_position_inchunk(t_stack	*stack, int start, int end)
+{
+	int	pos;
+
+	pos = 0;
+	while (stack)
+	{
+		if (stack->index <= end && stack->index >= start)
+			return (pos);
+		else
+			pos++;
+		stack = stack->next;
+	}
+	return (pos);
+}
+
+void	ft_buildb(t_stack	**stacka, t_stack	**stackb)
 {
 	int	i;
+	int	chunk_size;
+	int	start;
+	int	end;
+	int	size;
+	int	pos;
+
+	size = ft_lenlst(*stacka);
+	chunk_size = get_chunk_size(size);
+	start = 0;
+	i = 0;
+	while (start < size)
+	{
+		end = start + chunk_size - 1;
+		if (end >= size)
+			end = size - 1;
+		while (*stacka)
+		{
+			if (is_inchunk((*stacka)->index, start, end))
+				pb(stacka, stackb);
+			else
+			{
+				pos = get_position_inchunk(*stacka, start, end);
+				if (pos < size / 2)
+					ra(stacka);
+				else
+					rra(stacka);
+			}
+		}
+		i++;
+		start += chunk_size;
+	}
+	
 }
 
 int main(int ac, char **av)
@@ -61,9 +109,9 @@ int main(int ac, char **av)
 	int	size;
 	int	*sortedarr;
 	//int	**chunks;
-	//t_stack	*stackb;
+	t_stack	*stackb;
 
-	//stackb = NULL;
+	stackb = NULL;
 	stack = ft_parse(ac, av);
 	size = ft_lenlst(stack);
 	if (!stack)
@@ -72,6 +120,7 @@ int main(int ac, char **av)
 	indexing(&stack, sortedarr, size);
 	//chunks = split_into_chunks(size);
 	ft_printlst(stack, 'a');
-	ft_printindex(stack, 'a');
+	ft_buildb(&stack, &stackb);
+	ft_printlst(stackb, 'b');
 	return (0);
 }
