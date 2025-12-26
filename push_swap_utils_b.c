@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 15:57:06 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/23 11:20:24 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/26 10:19:11 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,24 @@ int	to_int(const char *s)
 		s++;
 	}
 	return (value);
+}
+
+void	rrb(t_stack **stack)
+{
+	t_stack	*prev;
+	t_stack	*last;
+
+	if (!(*stack) || !(*stack)->next)
+		return ;
+	prev = NULL;
+	last = *stack;
+	while (last->next)
+	{
+		prev = last;
+		last = last->next;
+	}
+	prev->next = NULL;
+	last->next = *stack;
+	*stack = last;
+	ft_printf("rra\n");
 }

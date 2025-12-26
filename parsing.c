@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 17:43:31 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/23 11:18:18 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/26 11:13:24 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,13 +87,52 @@ t_stack	*ft_single(char	*av)
 	return (stack);
 }
 
+t_stack	*get_numbers(int ac, char **av)
+{
+	char	**nums;
+	int		i;
+	t_stack	*stack;
+	int	c;
+
+	i = 1;
+	while (i < ac)
+	{
+		c = 0;
+		if (ft_isdigit(av[i][c])|| av[i][c] == 32)
+			c++;
+		else
+			return (NULL);
+		i++;
+	}
+	nums = malloc(sizeof(char *) * ac);
+	if (!nums)
+		return (NULL);
+	i = 1;
+	while (i < ac)
+	{
+		nums[i - 1] = ft_strdup(av[i]);
+		i++;
+	}
+	nums[i - 1] = NULL;
+	i = 0;
+	stack = ft_stack(nums);
+	return (stack);
+}
+
 t_stack	*ft_parse(int ac, char **av)
 {
 	t_stack	*stacka;
 
 	if (ac == 2)
 		stacka = ft_single(av[1]);
+	else if(ac > 2)
+	{
+		stacka = get_numbers(ac, av);
+	}
 	else
 		stacka = NULL;
 	return (stacka);
 }
+
+
+

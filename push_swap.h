@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 15:47:17 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/24 18:46:54 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/26 11:10:57 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,7 @@ void	indexing(t_stack **stack, int	*sorted, int size);
 int	**split_into_chunks(int size);
 int	get_chunk_size(int size);
 void	rra(t_stack **stack);
+void	rrb(t_stack **stack);
+int		ft_isdigit(int c);
 
 #endif
