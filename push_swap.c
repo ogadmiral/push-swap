@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 15:46:26 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/26 15:10:51 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/26 15:12:56 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,11 @@ int	get_position(t_stack	*stack, int index)
 		stack = stack->next;
 	}
 	return (pos);
+}
+
+void	ft_buildb(t_stack	**stacka, t_stack	**stackb, int	**chunks)
+{
+	int	i;
 }
 
 int main(int ac, char **av)
