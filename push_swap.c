@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 15:46:26 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/26 11:05:47 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/26 15:10:51 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,22 @@ void	ft_printindex(t_stack *stack, char c)
 		ft_printf("%d\n", head->index);
 		head = head->next;
 	}
+}
+
+int	get_position(t_stack	*stack, int index)
+{
+	int	pos;
+
+	pos = 0;
+	while (stack)
+	{
+		if (stack->index == index)
+			return (pos);
+		else
+			pos++;
+		stack = stack->next;
+	}
+	return (pos);
 }
 
 int main(int ac, char **av)
