@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 17:43:31 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/26 11:13:24 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/27 18:13:24 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,29 +40,24 @@ t_stack	*ft_stack(char	**array)
 	return (head);
 }
 
-int	is_repeated(t_stack *stack)
+int is_repeated(t_stack *stack)
 {
-	int	old_value;
-	int	is_first;
+    t_stack *current;
+    t_stack *runner;
 
-	is_first = 1;
-	while (stack)
-	{
-		if (is_first && stack->next)
-		{
-			old_value = stack->value;
-			stack = stack->next;
-			is_first = 0;
-		}
-		else
-		{
-			if (old_value == stack->value)
-				return (0);
-			old_value = stack->value;
-			stack = stack->next;
-		}
-	}
-	return (1);
+    current = stack;
+    while (current != NULL)
+    {
+        runner = current->next;
+        while (runner != NULL)
+        {
+            if (current->value == runner->value)
+                return (1);
+            runner = runner->next;
+        }
+        current = current->next;
+    }
+    return (0);
 }
 
 t_stack	*ft_single(char	*av)
@@ -82,7 +77,7 @@ t_stack	*ft_single(char	*av)
 	}
 	array = ft_split(av, ' ');
 	stack = ft_stack(array);
-	if (!is_repeated(stack))
+	if (is_repeated(stack))
 		return (NULL);
 	return (stack);
 }
@@ -116,6 +111,8 @@ t_stack	*get_numbers(int ac, char **av)
 	nums[i - 1] = NULL;
 	i = 0;
 	stack = ft_stack(nums);
+	if (is_repeated(stack))
+		return (NULL);
 	return (stack);
 }
 
