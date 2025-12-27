@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 15:13:40 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/26 17:35:05 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/27 15:15:39 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,4 +17,18 @@ int	is_inchunk(int index, int start, int end)
 	if (index >= start && index <= end)
 		return (1);
 	return (0);
+}
+
+int		count_inchunk(t_stack *stack, int start, int end)
+{
+	int	count;
+	
+	count = 0;
+	while (stack)
+	{
+		if (is_inchunk(stack->index, start, end))
+			count++;
+		stack = stack->next;
+	}
+	return (count);
 }
