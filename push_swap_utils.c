@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 15:13:40 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/27 15:15:39 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/27 18:23:47 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,24 @@ int		count_inchunk(t_stack *stack, int start, int end)
 		stack = stack->next;
 	}
 	return (count);
+}
+
+int	get_max(t_stack *stack)
+{
+	int	max;
+	int	is_first;
+
+	is_first = 1;
+	while (stack)
+	{
+		if (is_first)
+		{
+			max = stack->index;
+			is_first = 0;
+		}
+		if (stack->index >= max)
+			max = stack->index;
+		stack = stack->next;
+	}
+	return (max);
 }
