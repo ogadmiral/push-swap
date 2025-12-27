@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 15:46:26 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/26 18:04:34 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/27 18:42:59 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,49 +66,72 @@ int	get_position_inchunk(t_stack	*stack, int start, int end)
 	return (pos);
 }
 
-void	ft_buildb(t_stack	**stacka, t_stack	**stackb)
+void	ft_buildb(t_stack **stacka, t_stack **stackb)
 {
-	int	i;
+	int	size;
 	int	chunk_size;
 	int	start;
 	int	end;
-	int	size;
+	int	to_push;
 	int	pos;
 
 	size = ft_lenlst(*stacka);
 	chunk_size = get_chunk_size(size);
 	start = 0;
-	i = 0;
+
 	while (start < size)
 	{
 		end = start + chunk_size - 1;
 		if (end >= size)
 			end = size - 1;
-		while (*stacka)
+		/* count how many numbers belong to this chunk */
+		to_push = count_inchunk(*stacka, start, end);
+
+		while (to_push > 0)
 		{
 			if (is_inchunk((*stacka)->index, start, end))
+			{
 				pb(stacka, stackb);
+				to_push--;
+			}
 			else
 			{
 				pos = get_position_inchunk(*stacka, start, end);
-				if (pos < size / 2)
+				if (pos <= ft_lenlst(*stacka) / 2)
 					ra(stacka);
 				else
 					rra(stacka);
 			}
 		}
-		i++;
 		start += chunk_size;
 	}
-	
 }
 
+void	ft_build_fromb(t_stack	**stackb, t_stack **stacka)
+{
+	int	max;
+	int	pos;
+
+	while (*stackb)
+	{
+		max = get_max(*stackb);
+		if ((*stackb)->index == max)
+			pa(stackb, stacka);
+		else
+		{
+			pos = get_position(*stackb, max);
+			if (pos <= ft_lenlst(*stackb) / 2)
+				rb(stackb);
+			else
+				rrb(stackb);
+		}
+	}
+}
 int main(int ac, char **av)
 {
 	t_stack	*stack;
 	int	size;
 	int	*sortedarr;
-	//int	**chunks;
 	t_stack	*stackb;
 
 	stackb = NULL;
@@ -118,9 +141,7 @@ int main(int ac, char **av)
 		return (ft_printf("Error\n"), 0);
 	sortedarr = stack_to_sorted_array(stack, size);
 	indexing(&stack, sortedarr, size);
-	//chunks = split_into_chunks(size);
-	ft_printlst(stack, 'a');
 	ft_buildb(&stack, &stackb);
-	ft_printlst(stackb, 'b');
+	ft_build_fromb(&stackb, &stack);
 	return (0);
 }
