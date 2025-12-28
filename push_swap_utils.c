@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 15:13:40 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/28 11:05:45 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/28 22:01:55 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,15 @@ int	get_max(t_stack *stack)
 		stack = stack->next;
 	}
 	return (max);
+}
+
+int	is_sorted(t_stack	*a)
+{
+	while (a && a->next)
+	{
+		if (a->value > a->next->value)
+			return (0);
+		a = a->next;
+	}
+	return (1);
 }

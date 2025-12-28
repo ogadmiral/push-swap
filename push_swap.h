@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 15:47:17 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/28 14:11:18 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/28 22:00:36 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ int		ft_isdigit(int c);
 int		is_inchunk(int index, int start, int end);
 int		count_inchunk(t_stack *stack, int start, int end);
 int		get_max(t_stack *stack);
+int		is_sorted(t_stack	*a);
 
 #endif

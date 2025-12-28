@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 15:46:26 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/28 14:09:21 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/28 22:01:08 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,8 @@ int main(int ac, char **av)
 	size = ft_lenlst(stack);
 	if (!stack)
 		return (ft_printf("Error\n"), 0);
+	if (is_sorted(stack))
+		return (0);
 	sortedarr = stack_to_sorted_array(stack, size);
 	indexing(&stack, sortedarr, size);
 	ft_buildb(&stack, &stackb);
