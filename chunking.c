@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 09:50:19 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/26 10:08:32 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/28 11:53:47 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	get_chunk_size(int size)
 		return (30);
 	if (size <= 400)
 		return (40);
-	return (50);
+	return (35);
 }
 
 void	fill_arr(int *arr, int start, int end)
