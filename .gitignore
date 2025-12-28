@@ -6,3 +6,4 @@ push_swap
 *.o
 ./Push-Swap-Tester
 Push-Swap-Tester/
+push_swap_visualizer/
