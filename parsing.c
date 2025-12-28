@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 17:43:31 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/28 10:12:29 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/28 14:12:36 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,9 @@ t_stack *ft_single(char *av)
     i = 0;
     while (av[i])
     {
-        // Allow digits, spaces, and signs
         if ((av[i] >= '0' && av[i] <= '9') || av[i] == ' ' || 
             av[i] == '-' || av[i] == '+' || (av[i] >= 9 && av[i] <= 13))
         {
-            // Logic check: if it's a sign, the next char MUST be a digit
             if ((av[i] == '-' || av[i] == '+') && !(av[i + 1] >= '0' && av[i + 1] <= '9'))
                 return (NULL);
             i++;
@@ -83,7 +81,6 @@ t_stack *ft_single(char *av)
     }
     array = ft_split(av, ' ');
     stack = ft_stack(array);
-    // You should free your 'array' here to avoid leaks!
     if (!stack || is_repeated(stack))
         return (NULL);
     return (stack);
@@ -100,10 +97,9 @@ t_stack *get_numbers(int ac, char **av)
     while (i < ac)
     {
         c = 0;
-        if (!av[i][0]) return (NULL); // Handle empty strings ""
+        if (!av[i][0]) return (NULL); 
         while (av[i][c])
         {
-            // Check for valid character: digit or sign at the start
             if (ft_isdigit(av[i][c]))
                 c++;
             else if ((av[i][c] == '-' || av[i][c] == '+') && c == 0 && ft_isdigit(av[i][c + 1]))
@@ -113,7 +109,6 @@ t_stack *get_numbers(int ac, char **av)
         }
         i++;
     }
-    // Rest of your allocation logic...
     nums = malloc(sizeof(char *) * ac);
     if (!nums) return (NULL);
     i = 1;
@@ -124,7 +119,6 @@ t_stack *get_numbers(int ac, char **av)
     }
     nums[i - 1] = NULL;
     stack = ft_stack(nums);
-    // free(nums) logic should go here
     if (!stack || is_repeated(stack))
         return (NULL);
     return (stack);
