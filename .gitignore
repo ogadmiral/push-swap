@@ -4,3 +4,4 @@ main
 push_swap
 *.a
 *.o
+./Push-Swap-Tester
