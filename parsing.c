@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 17:43:31 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/27 18:13:24 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/28 10:12:29 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_stack	*ft_stack(char	**array)
 	time = 1;
 	while (array[i])
 	{
-		value = to_int(array[i]);
+		value = ft_atoi(array[i]);
 		if (time == 1)
 		{
 			head = ft_lstnew(value);
@@ -60,60 +60,74 @@ int is_repeated(t_stack *stack)
     return (0);
 }
 
-t_stack	*ft_single(char	*av)
+t_stack *ft_single(char *av)
 {
-	int		i;
-	char	**array;
-	t_stack	*stack;
+    int     i;
+    char    **array;
+    t_stack *stack;
 
-	i = 0;
-	while (av[i])
-	{
-		if ((av[i] <= '9' && av[i] >= '0') || (av[i] > 9 && av[i] < 13)
-			|| av[i] == 32)
-			i++;
-		else
-			return (NULL);
-	}
-	array = ft_split(av, ' ');
-	stack = ft_stack(array);
-	if (is_repeated(stack))
-		return (NULL);
-	return (stack);
+    i = 0;
+    while (av[i])
+    {
+        // Allow digits, spaces, and signs
+        if ((av[i] >= '0' && av[i] <= '9') || av[i] == ' ' || 
+            av[i] == '-' || av[i] == '+' || (av[i] >= 9 && av[i] <= 13))
+        {
+            // Logic check: if it's a sign, the next char MUST be a digit
+            if ((av[i] == '-' || av[i] == '+') && !(av[i + 1] >= '0' && av[i + 1] <= '9'))
+                return (NULL);
+            i++;
+        }
+        else
+            return (NULL);
+    }
+    array = ft_split(av, ' ');
+    stack = ft_stack(array);
+    // You should free your 'array' here to avoid leaks!
+    if (!stack || is_repeated(stack))
+        return (NULL);
+    return (stack);
 }
 
-t_stack	*get_numbers(int ac, char **av)
+t_stack *get_numbers(int ac, char **av)
 {
-	char	**nums;
-	int		i;
-	t_stack	*stack;
-	int	c;
+    char    **nums;
+    int     i;
+    int     c;
+    t_stack *stack;
 
-	i = 1;
-	while (i < ac)
-	{
-		c = 0;
-		if (ft_isdigit(av[i][c])|| av[i][c] == 32)
-			c++;
-		else
-			return (NULL);
-		i++;
-	}
-	nums = malloc(sizeof(char *) * ac);
-	if (!nums)
-		return (NULL);
-	i = 1;
-	while (i < ac)
-	{
-		nums[i - 1] = ft_strdup(av[i]);
-		i++;
-	}
-	nums[i - 1] = NULL;
-	i = 0;
-	stack = ft_stack(nums);
-	if (is_repeated(stack))
-		return (NULL);
-	return (stack);
+    i = 1;
+    while (i < ac)
+    {
+        c = 0;
+        if (!av[i][0]) return (NULL); // Handle empty strings ""
+        while (av[i][c])
+        {
+            // Check for valid character: digit or sign at the start
+            if (ft_isdigit(av[i][c]))
+                c++;
+            else if ((av[i][c] == '-' || av[i][c] == '+') && c == 0 && ft_isdigit(av[i][c + 1]))
+                c++;
+            else
+                return (NULL);
+        }
+        i++;
+    }
+    // Rest of your allocation logic...
+    nums = malloc(sizeof(char *) * ac);
+    if (!nums) return (NULL);
+    i = 1;
+    while (i < ac)
+    {
+        nums[i - 1] = ft_strdup(av[i]);
+        i++;
+    }
+    nums[i - 1] = NULL;
+    stack = ft_stack(nums);
+    // free(nums) logic should go here
+    if (!stack || is_repeated(stack))
+        return (NULL);
+    return (stack);
 }
 
 t_stack	*ft_parse(int ac, char **av)
@@ -130,6 +144,3 @@ t_stack	*ft_parse(int ac, char **av)
 		stacka = NULL;
 	return (stacka);
 }
-
-
-
