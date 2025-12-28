@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 15:46:26 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/28 10:23:51 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/28 14:09:21 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,42 +68,24 @@ int	get_position_inchunk(t_stack	*stack, int start, int end)
 
 void	ft_buildb(t_stack **stacka, t_stack **stackb)
 {
-	int	size;
-	int	chunk_size;
-	int	start;
-	int	end;
-	int	to_push;
-	int	pos;
+	int i = 0;
+	int chunk = get_chunk_size(ft_lenlst(*stacka)); 
 
-	size = ft_lenlst(*stacka);
-	chunk_size = get_chunk_size(size);
-	start = 0;
-
-	while (start < size)
+	while (*stacka)
 	{
-		end = start + chunk_size - 1;
-		if (end >= size)
-			end = size - 1;
-		/* count how many numbers belong to this chunk */
-		to_push = count_inchunk(*stacka, start, end);
-
-		while (to_push > 0)
+		if ((*stacka)->index <= i)
 		{
-			if (is_inchunk((*stacka)->index, start, end))
-			{
-				pb(stacka, stackb);
-				to_push--;
-			}
-			else
-			{
-				pos = get_position_inchunk(*stacka, start, end);
-				if (pos <= ft_lenlst(*stacka) / 2)
-					ra(stacka);
-				else
-					rra(stacka);
-			}
+			pb(stacka, stackb);
+			rb(stackb);
+			i++;
 		}
-		start += chunk_size;
+		else if ((*stacka)->index <= i + chunk)
+		{
+			pb(stacka, stackb);
+			i++;
+		}
+		else
+			ra(stacka);
 	}
 }
 
@@ -127,6 +109,7 @@ void	ft_build_fromb(t_stack	**stackb, t_stack **stacka)
 		}
 	}
 }
+
 int main(int ac, char **av)
 {
 	t_stack	*stack;
