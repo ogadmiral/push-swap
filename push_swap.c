@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 15:46:26 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/29 15:10:04 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/29 15:21:38 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,31 +74,40 @@ void	ft_build_fromb(t_stack	**stackb, t_stack **stacka)
 	}
 }
 
+void	stack_frier(t_stack **stack)
+{
+	t_stack	*next;
+
+	while (*stack)
+	{
+		next = (*stack)->next;
+		free(*stack);
+		*stack = next;
+	}
+}
+
 int	main(int ac, char **av)
 {
 	t_stack	*stack;
 	int		size;
 	int		*sortedarr;
 	t_stack	*stackb;
-	t_stack	*next;
 
 	stackb = NULL;
 	stack = ft_parse(ac, av);
 	size = ft_lenlst(stack);
 	if (!stack)
+	{
+		stack_frier(&stack);
 		return (ft_printf("Error\n"), 0);
+	}
 	if (is_sorted(stack))
-		return (0);
+		return (stack_frier(&stack), 0);
 	sortedarr = stack_to_sorted_array(stack, size);
 	indexing(&stack, sortedarr, size);
 	free(sortedarr);
 	ft_buildb(&stack, &stackb);
 	ft_build_fromb(&stackb, &stack);
-	while (stack)
-	{
-		next = stack->next;
-		free(stack);
-		stack = next;
-	}
+	stack_frier(&stack);
 	return (0);
 }
