@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 15:13:40 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/29 14:38:24 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/29 15:05:37 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,24 @@ int	is_sorted(t_stack	*a)
 		a = a->next;
 	}
 	return (1);
+}
+
+int	is_repeated(t_stack *stack)
+{
+	t_stack	*current;
+	t_stack	*runner;
+
+	current = stack;
+	while (current != NULL)
+	{
+		runner = current->next;
+		while (runner != NULL)
+		{
+			if (current->value == runner->value)
+				return (1);
+			runner = runner->next;
+		}
+		current = current->next;
+	}
+	return (0);
 }
