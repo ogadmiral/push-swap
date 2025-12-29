@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 15:46:26 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/29 15:21:38 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/29 16:04:45 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int	main(int ac, char **av)
 	if (!stack)
 	{
 		stack_frier(&stack);
-		return (ft_printf("Error\n"), 0);
+		return (write(2, "Error\n", 6), 0);
 	}
 	if (is_sorted(stack))
 		return (stack_frier(&stack), 0);
