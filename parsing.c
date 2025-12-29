@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 17:43:31 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/28 14:12:36 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/28 22:24:11 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,11 @@ t_stack *get_numbers(int ac, char **av)
     }
     nums[i - 1] = NULL;
     stack = ft_stack(nums);
+    i = 0;
+    while (nums[i])
+        free(nums[i++]);
+    free(nums[i]);
+    free(nums);
     if (!stack || is_repeated(stack))
         return (NULL);
     return (stack);
@@ -129,7 +134,11 @@ t_stack	*ft_parse(int ac, char **av)
 	t_stack	*stacka;
 
 	if (ac == 2)
+    {
+        if (av[1][0] == '\0')
+            return (NULL);
 		stacka = ft_single(av[1]);
+    }
 	else if(ac > 2)
 	{
 		stacka = get_numbers(ac, av);
