@@ -6,33 +6,11 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 15:46:26 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/29 14:24:01 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/29 15:10:04 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	ft_printlst(t_stack *stack, char c)
-{
-	t_stack *head = stack;
-	ft_printf("Stack %c: \n", c);
-	while(head)
-	{
-		ft_printf("%d\n", head->value);
-		head = head->next;
-	}
-}
-
-void	ft_printindex(t_stack *stack, char c)
-{
-	t_stack *head = stack;
-	ft_printf("Stack %c: \n", c);
-	while(head)
-	{
-		ft_printf("%d\n", head->index);
-		head = head->next;
-	}
-}
 
 int	get_position(t_stack	*stack, int index)
 {
@@ -50,27 +28,13 @@ int	get_position(t_stack	*stack, int index)
 	return (pos);
 }
 
-int	get_position_inchunk(t_stack	*stack, int start, int end)
-{
-	int	pos;
-
-	pos = 0;
-	while (stack)
-	{
-		if (stack->index <= end && stack->index >= start)
-			return (pos);
-		else
-			pos++;
-		stack = stack->next;
-	}
-	return (pos);
-}
-
 void	ft_buildb(t_stack **stacka, t_stack **stackb)
 {
-	int i = 0;
-	int chunk = get_chunk_size(ft_lenlst(*stacka)); 
+	int	i;
+	int	chunk;
 
+	i = 0;
+	chunk = get_chunk_size(ft_lenlst(*stacka));
 	while (*stacka)
 	{
 		if ((*stacka)->index <= i)
@@ -110,11 +74,11 @@ void	ft_build_fromb(t_stack	**stackb, t_stack **stacka)
 	}
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	t_stack	*stack;
-	int	size;
-	int	*sortedarr;
+	int		size;
+	int		*sortedarr;
 	t_stack	*stackb;
 	t_stack	*next;
 
