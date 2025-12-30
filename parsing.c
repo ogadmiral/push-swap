@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 17:43:31 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/30 15:49:25 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/30 17:56:00 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ t_stack	*ft_stack(char	**array)
 	time = 1;
 	while (array[i])
 	{
-		value = ft_atoi(array[i]);
+		if (ft_atoi(array[i]) > 2147483647 || ft_atoi(array[i]) < -2147483648)
+			return (NULL);
+		value = ft_atoi(array[i++]);
 		if (time == 1)
 		{
 			head = ft_lstnew(value);
@@ -35,7 +37,6 @@ t_stack	*ft_stack(char	**array)
 			node = ft_lstnew(value);
 			ft_lstadd_back(&head, node);
 		}
-		i++;
 	}
 	return (head);
 }
