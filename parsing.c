@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 17:43:31 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/29 15:05:12 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/30 15:25:14 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,10 @@ t_stack	*ft_single(char *av)
 	stack = ft_stack(array);
 	if (!stack || is_repeated(stack))
 		return (NULL);
+	i = 0;
+	while (array[i])
+		free(array[i++]);
+	free(array);
 	return (stack);
 }
 
