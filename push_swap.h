@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 15:47:17 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/30 15:46:31 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/30 16:18:26 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	pa(t_stack **stackb, t_stack **stacka);
 void	pb(t_stack **stacka, t_stack **stackb);
 void	ra(t_stack **stack);
 void	rb(t_stack **stack);
+void	sa(t_stack **stack);
 t_stack	*ft_parse(int ac, char **av);
 int		*stack_to_sorted_array(t_stack *stack, int size);
 int		ft_lenlst(t_stack *lst);
@@ -35,5 +36,6 @@ int		get_max(t_stack *stack);
 int		is_sorted(t_stack	*a);
 int		is_repeated(t_stack *stack);
 void	stack_frier(t_stack **stack);
+void	small_sort(t_stack *stack, t_stack *stackb, int size);
 
 #endif

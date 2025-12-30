@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 10:11:14 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/29 14:39:44 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/30 16:26:35 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,17 @@ void	rra(t_stack **stack)
 	last->next = *stack;
 	*stack = last;
 	ft_printf("rra\n");
+}
+
+void	sa(t_stack **stack)
+{
+	t_stack	*first;
+	t_stack	*second;
+
+	first = (*stack);
+	second = (*stack)->next;
+	first->next = second->next;
+	second->next = first;
+	(*stack) = second;
+	ft_printf("sa\n");
 }
