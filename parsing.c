@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 17:43:31 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/30 15:25:14 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/30 15:49:25 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,12 @@ t_stack	*ft_single(char *av)
 	}
 	array = ft_split(av, ' ');
 	stack = ft_stack(array);
-	if (!stack || is_repeated(stack))
-		return (NULL);
 	i = 0;
 	while (array[i])
 		free(array[i++]);
 	free(array);
+	if (!stack || is_repeated(stack))
+		return (stack_frier(&stack), NULL);
 	return (stack);
 }
 
@@ -86,13 +86,13 @@ t_stack	*nums_to_stack(int ac, char **av)
 	}
 	nums[i - 1] = NULL;
 	stack = ft_stack(nums);
-	if (!stack || is_repeated(stack))
-		return (NULL);
 	i = 0;
 	while (nums[i])
 		free(nums[i++]);
 	free(nums[i]);
 	free(nums);
+	if (!stack || is_repeated(stack))
+		return (stack_frier(&stack), NULL);
 	return (stack);
 }
 

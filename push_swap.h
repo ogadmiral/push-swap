@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 15:47:17 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/29 15:10:53 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/30 15:46:31 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ int		count_inchunk(t_stack *stack, int start, int end);
 int		get_max(t_stack *stack);
 int		is_sorted(t_stack	*a);
 int		is_repeated(t_stack *stack);
+void	stack_frier(t_stack **stack);
 
 #endif
