@@ -6,7 +6,7 @@
 #    By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/10 15:45:58 by mdamouh           #+#    #+#              #
-#    Updated: 2025/12/30 16:19:00 by mdamouh          ###   ########.fr        #
+#    Updated: 2025/12/30 17:05:25 by mdamouh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ $(PRINTF):
 $(LIBFT):
 	make bonus -C ./libft
 $(NAME): $(SRCS) $(PRINTF) $(LIBFT)
-	$(CC) -g $(CFLAGS) $(SRCS) $(PRINTF) $(LIBFT) -o $(NAME)
+	$(CC) $(CFLAGS) $(SRCS) $(PRINTF) $(LIBFT) -o $(NAME)
 
 clean:
 	make clean -C ft_printf

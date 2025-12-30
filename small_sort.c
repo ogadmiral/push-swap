@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 16:14:46 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/30 16:23:44 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/30 17:04:07 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,21 @@ void	sort_three(t_stack **a)
 
 void	sort_five(t_stack **a, t_stack **b)
 {
+	int	size;
+
+	size = ft_lenlst(*a);
 	while (ft_lenlst(*a) > 3)
 	{
-		if ((*a)->index <= 1)
+		if ((*a)->index < (size - 3))
 			pb(a, b);
 		else
 			ra(a);
 	}
 	sort_three(a);
-	if (*b && (*b)->index == 0)
+	if (*b && (*b)->next && (*b)->index < (*b)->next->index)
 		sb(b);
-	pa(b, a);
-	pa(b, a);
+	while (*b)
+		pa(b, a);
 }
 
 void	small_sort(t_stack *stack, t_stack *stackb, int size)
@@ -64,4 +67,5 @@ void	small_sort(t_stack *stack, t_stack *stackb, int size)
 		sort_three(&stack);
 	if (size <= 5)
 		sort_five(&stack, &stackb);
+	stack_frier(&stack);
 }
