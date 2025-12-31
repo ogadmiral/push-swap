@@ -6,11 +6,21 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 20:37:23 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/10/26 13:16:07 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/31 21:33:55 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static size_t	ft_strlen(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
 
 static char	*ft_substrhelp(char const *s, unsigned int start, size_t len)
 {

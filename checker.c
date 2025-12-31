@@ -6,34 +6,44 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 14:24:26 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/31 21:14:53 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/31 21:48:22 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "get_next_line/get_next_line.h"
 
-void	ft_applyinst(char *line, t_stack **a, t_stack **b)
+static int	ft_strcmp(const char *s1, const char *s2)
 {
-	if (line == "sa\n")
+	int	i;
+
+	i = 0;
+	while (s1[i] && s2[i] && s1[i] == s2[i])
+		i++;
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+}
+
+static void	ft_applyinst(char *line, t_stack **a, t_stack **b)
+{
+	if (ft_strcmp(line ,"sa\n") == 0)
 		sa(a);
-	else if (line == "sb\n")
+	else if (ft_strcmp(line ,"sb\n") == 0)
 		sb(b);
-	else if (line == "ss\n")
+	else if (ft_strcmp(line ,"ss\n") == 0)
 		ss(a, b);
-	else if (line == "pa\n")
+	else if (ft_strcmp(line ,"pa\n") == 0)
 		pa(b, a);
-	else if (line == "pb\n")
+	else if (ft_strcmp(line ,"pb\n") == 0)
 		pb(a, b);
-	else if (line == "ra\n")
+	else if (ft_strcmp(line ,"ra\n") == 0)
 		ra(a);
-	else if (line == "rb\n")
+	else if (ft_strcmp(line ,"rb\n") == 0)
 		rb(b);
-	else if (line == "rra\n")
+	else if (ft_strcmp(line ,"rra\n") == 0)
 		rra(a);
-	else if (line == "rrb\n")
+	else if (ft_strcmp(line ,"rrb\n") == 0)
 		rrb(b);
-	else if (line == "rrr\n")
+	else if (ft_strcmp(line ,"rrr\n") == 0)
 		rrr(a, b);
 }
 
