@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 15:47:17 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/30 16:49:00 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/31 21:06:07 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,9 @@ int		is_sorted(t_stack	*a);
 int		is_repeated(t_stack *stack);
 void	stack_frier(t_stack **stack);
 void	small_sort(t_stack *stack, t_stack *stackb, int size);
+//bonus
+void	ss(t_stack **a, t_stack **b);
+void	rr(t_stack **a, t_stack **b);
+void	rrr(t_stack **a, t_stack **b);
 
 #endif
