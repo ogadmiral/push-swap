@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 14:24:26 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/31 21:12:27 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/31 21:14:53 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,9 @@ int	main(int ac, char **av)
 		free(line);
 		line = get_next_line(0);
 	}
+	if(is_sorted(stack))
+		ft_printf("OK\n");
+	else
+		ft_printf("KO\n");
 	return (0);
 }
