@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 14:24:26 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/31 20:59:06 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/31 21:09:35 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,21 @@ void	ft_applyinst(char *line, t_stack **a, t_stack **b)
 	else if(line == "sb\n")
 		sb(b);
 	else if(line == "ss\n")
-		ss(b);
-	
+		ss(a, b);
+	else if(line == "pa\n")
+		pa(b, a);
+	else if(line == "pb\n")
+		pb(a, b);
+	else if(line == "ra\n")
+		ra(a);
+	else if(line == "rb\n")
+		rb(b);
+	else if(line == "rra\n")
+		rra(a);
+	else if(line == "rrb\n")
+		rrb(b);
+	else if(line == "rrr\n")
+		rrr(a, b);	
 }
 
 int main(int ac, char **av)
