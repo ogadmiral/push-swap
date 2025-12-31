@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 21:00:17 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/31 21:02:08 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/31 21:04:46 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,11 @@ void	ss(t_stack **a, t_stack **b)
 {
 	sa(a);
 	sb(b);
+}
+
+void	rr(t_stack **a, t_stack **b)
+{
+	ra(a);
+	rb(b);
 }
 
