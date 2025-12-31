@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 15:46:26 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/30 17:26:40 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/31 22:19:14 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,18 +71,6 @@ void	ft_build_fromb(t_stack	**stackb, t_stack **stacka)
 			else
 				rrb(stackb);
 		}
-	}
-}
-
-void	stack_frier(t_stack **stack)
-{
-	t_stack	*next;
-
-	while (*stack)
-	{
-		next = (*stack)->next;
-		free(*stack);
-		*stack = next;
 	}
 }
 

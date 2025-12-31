@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 11:08:19 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/29 14:36:36 by mdamouh          ###   ########.fr       */
+/*   Updated: 2025/12/31 22:20:06 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,17 @@ void	indexing(t_stack **stack, int	*sorted, int size)
 			node = node->next;
 		}
 		i++;
+	}
+}
+
+void	stack_frier(t_stack **stack)
+{
+	t_stack	*next;
+
+	while (*stack)
+	{
+		next = (*stack)->next;
+		free(*stack);
+		*stack = next;
 	}
 }
