@@ -6,12 +6,12 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 14:24:26 by mdamouh           #+#    #+#             */
-/*   Updated: 2026/01/01 10:38:59 by mdamouh          ###   ########.fr       */
+/*   Updated: 2026/01/01 11:08:13 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "bonus/bonus.h"
+#include "bonus_part/bonus.h"
 #include "get_next_line/get_next_line.h"
 
 static int	ft_strcmp(const char *s1, const char *s2)
