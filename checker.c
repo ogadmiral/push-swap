@@ -6,11 +6,12 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 14:24:26 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/31 22:27:38 by mdamouh          ###   ########.fr       */
+/*   Updated: 2026/01/01 10:38:59 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "bonus/bonus.h"
 #include "get_next_line/get_next_line.h"
 
 static int	ft_strcmp(const char *s1, const char *s2)
@@ -26,23 +27,25 @@ static int	ft_strcmp(const char *s1, const char *s2)
 static void	ft_applyinst(char *line, t_stack **a, t_stack **b)
 {
 	if (ft_strcmp(line, "sa\n") == 0)
-		sa(a);
+		sabonus(a);
 	else if (ft_strcmp(line, "sb\n") == 0)
-		sb(b);
+		sbbonus(b);
 	else if (ft_strcmp(line, "ss\n") == 0)
 		ss(a, b);
 	else if (ft_strcmp(line, "pa\n") == 0)
-		pa(b, a);
+		pabonus(b, a);
 	else if (ft_strcmp(line, "pb\n") == 0)
-		pb(a, b);
+		pbbonus(a, b);
 	else if (ft_strcmp(line, "ra\n") == 0)
-		ra(a);
+		rabonus(a);
 	else if (ft_strcmp(line, "rb\n") == 0)
-		rb(b);
+		rbbonus(b);
+	else if (ft_strcmp(line, "rr\n") == 0)
+		rr(a, b);
 	else if (ft_strcmp(line, "rra\n") == 0)
-		rra(a);
+		rrabonus(a);
 	else if (ft_strcmp(line, "rrb\n") == 0)
-		rrb(b);
+		rrbbonus(b);
 	else if (ft_strcmp(line, "rrr\n") == 0)
 		rrr(a, b);
 }
@@ -73,5 +76,5 @@ int	main(int ac, char **av)
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");
-	return (0);
+	return (stack_frier(&stack), 0);
 }
