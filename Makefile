@@ -6,7 +6,7 @@
 #    By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/10 15:45:58 by mdamouh           #+#    #+#              #
-#    Updated: 2025/12/31 21:53:38 by mdamouh          ###   ########.fr        #
+#    Updated: 2026/01/01 10:00:40 by mdamouh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,8 +39,8 @@ clean:
 fclean:
 	make fclean -C ft_printf
 	make fclean -C libft
-	rm push_swap
-	rm checker
+	rm -f push_swap
+	rm -f checker
 
 re: fclean all
 
