@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 16:14:46 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/30 17:04:07 by mdamouh          ###   ########.fr       */
+/*   Updated: 2026/01/03 00:34:56 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ void	small_sort(t_stack *stack, t_stack *stackb, int size)
 	{
 		if (stack->index > stack->next->index)
 			sa(&stack);
+		stack_frier(&stack);
+		exit(0);
 	}
 	if (size == 3)
 		sort_three(&stack);
