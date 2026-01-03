@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 17:43:31 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/30 17:56:00 by mdamouh          ###   ########.fr       */
+/*   Updated: 2026/01/03 01:17:53 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ t_stack	*ft_single(char *av)
 	{
 		if (ft_isdigit(av[i]) || av[i] == ' ' || av[i] == '-' || av[i] == '+')
 		{
-			if ((av[i] == '-' || av[i] == '+') && !(ft_isdigit(av[i + 1])))
+			if ((av[i] == '-' || av[i] == '+') && (!ft_isdigit(av[i + 1])
+					|| (i != 0 && av[i - 1] != ' ')))
 				return (NULL);
 			i++;
 		}
@@ -64,10 +65,9 @@ t_stack	*ft_single(char *av)
 	i = 0;
 	while (array[i])
 		free(array[i++]);
-	free(array);
 	if (!stack || is_repeated(stack))
-		return (stack_frier(&stack), NULL);
-	return (stack);
+		return (stack_frier(&stack), free(array), NULL);
+	return (free(array), stack);
 }
 
 t_stack	*nums_to_stack(int ac, char **av)
