@@ -45,4 +45,35 @@ Compile the program using:
 
 ```bash
 make
+```
+## Bonus — Checker Program
 
+As part of the bonus, this project includes an additional program called **checker**.
+
+### Description
+
+The `checker` program takes the same arguments as `push_swap` and reads a list of
+instructions from **standard input**.  
+It executes these instructions on the stacks and verifies whether the result is valid.
+
+- If **stack a is sorted** and **stack b is empty**, it prints:
+
+OK otherwise, it prints KO.
+Incase of Error it prints "Error\n" to stderror
+
+### Compilation
+
+The bonus is compiled using:
+```bash
+make bonus
+```
+This generates:
+./checker
+
+### Usage:
+```bash
+./push_swap 1337 42 2026 | ./checker 1337 42 2026
+```
+### Output:
+```bash
+OK
