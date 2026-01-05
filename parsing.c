@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 17:43:31 by mdamouh           #+#    #+#             */
-/*   Updated: 2026/01/05 10:40:16 by mdamouh          ###   ########.fr       */
+/*   Updated: 2026/01/05 18:44:18 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,20 +47,11 @@ t_stack	*ft_single(char *av)
 	char	**array;
 	t_stack	*stack;
 
-	i = 0;
-	while (av[i])
-	{
-		if (ft_isdigit(av[i]) || av[i] == ' ' || av[i] == '-' || av[i] == '+')
-		{
-			if ((av[i] == '-' || av[i] == '+') && (!ft_isdigit(av[i + 1])
-					|| (i != 0 && av[i - 1] != ' ')))
-				return (NULL);
-			i++;
-		}
-		else
-			return (NULL);
-	}
+	if (!check_arg(av))
+		return (NULL);
 	array = ft_split(av, ' ');
+	if (!array[0])
+		return (free(array), NULL);
 	stack = ft_stack(array);
 	i = 0;
 	while (array[i])
