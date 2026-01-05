@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 17:43:31 by mdamouh           #+#    #+#             */
-/*   Updated: 2026/01/05 18:44:18 by mdamouh          ###   ########.fr       */
+/*   Updated: 2026/01/05 19:56:42 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ t_stack	*get_numbers(int ac, char **av)
 			return (NULL);
 		while (av[i][c])
 		{
-			if (ft_isdigit(av[i][c]))
+			if (ft_isdigit(av[i][c]) || av[i][c] == ' ')
 				c++;
 			else if ((av[i][c] == '-' || av[i][c] == '+')
 					&& c == 0 && ft_isdigit(av[i][c + 1]))
