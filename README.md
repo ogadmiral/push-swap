@@ -198,8 +198,8 @@ All code was written, reviewed, and fully understood by the author.
 ## Resources
 
 - 42 Push_swap Subject (v10.0)
-- Valgrind documentation
-- Sorting algorithm references
+- https://www.youtube.com/watch?v=N6dOwBde7-M
+- https://www.w3schools.com/
 - Peer reviews
 
 ---
