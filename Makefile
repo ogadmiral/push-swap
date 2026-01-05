@@ -6,7 +6,7 @@
 #    By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/10 15:45:58 by mdamouh           #+#    #+#              #
-#    Updated: 2026/01/05 18:44:35 by mdamouh          ###   ########.fr        #
+#    Updated: 2026/01/05 21:04:46 by mdamouh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME        = push_swap
 CHECKER     = checker
 
 CC          = cc
-CFLAGS      = -g -Wall -Wextra -Werror
+CFLAGS      = -Wall -Wextra -Werror
 
 PRINTF      = ./ft_printf/libftprintf.a
 LIBFT       = ./libft/libft.a

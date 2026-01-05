@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/01 10:20:38 by mdamouh           #+#    #+#             */
-/*   Updated: 2026/01/01 10:29:46 by mdamouh          ###   ########.fr       */
+/*   Updated: 2026/01/05 21:05:13 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	sbbonus(t_stack **stack)
 	t_stack	*first;
 	t_stack	*second;
 
+	if (!(*stack) || !(*stack)->next)
+		return ;
 	first = (*stack);
 	second = (*stack)->next;
 	first->next = second->next;
