@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 15:47:17 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/31 21:06:07 by mdamouh          ###   ########.fr       */
+/*   Updated: 2026/01/05 10:41:55 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,7 @@ void	small_sort(t_stack *stack, t_stack *stackb, int size);
 void	ss(t_stack **a, t_stack **b);
 void	rr(t_stack **a, t_stack **b);
 void	rrr(t_stack **a, t_stack **b);
+//parsing
+int		handle_overflow(char *arr);
 
 #endif

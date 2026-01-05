@@ -6,7 +6,7 @@
 #    By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/10 15:45:58 by mdamouh           #+#    #+#              #
-#    Updated: 2026/01/01 11:32:54 by mdamouh          ###   ########.fr        #
+#    Updated: 2026/01/05 10:43:32 by mdamouh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,14 +19,14 @@ CFLAGS      = -Wall -Wextra -Werror
 PRINTF      = ./ft_printf/libftprintf.a
 LIBFT       = ./libft/libft.a
 
-SRCS        = push_swap.c push_swap_utils_a.c push_swap_utils_b.c \
+SRCS        = push_swap.c push_swap_utils_a.c push_swap_utils_b.c get_next_line/get_next_line_utils.c\
               parsing.c indexing.c chunking.c push_swap_utils.c small_sort.c
 OBJS        = $(SRCS:.c=.o)
 
 BONUSSRC    = checker.c bonus_part/bonus_operations.c \
               bonus_part/operations_a.c bonus_part/operations_b.c \
               get_next_line/get_next_line.c get_next_line/get_next_line_utils.c \
-              parsing.c indexing.c push_swap_utils.c
+              parsing.c indexing.c push_swap_utils.c push_swap_utils_b.c
 BOBJS       = $(BONUSSRC:.c=.o)
 
 all: $(NAME)
