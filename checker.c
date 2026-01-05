@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 14:24:26 by mdamouh           #+#    #+#             */
-/*   Updated: 2026/01/01 11:08:13 by mdamouh          ###   ########.fr       */
+/*   Updated: 2026/01/05 11:31:17 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,21 @@ static int	ft_strcmp(const char *s1, const char *s2)
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
 
-static void	ft_applyinst(char *line, t_stack **a, t_stack **b)
+static void	error(char *line, t_stack **a, t_stack **b)
+{
+	write(2, "Error\n", 6);
+	stack_frier(a);
+	stack_frier(b);
+	free(line);
+	line = get_next_line(0);
+	while (line)
+	{
+		free(line);
+		line = get_next_line(0);
+	}
+}
+
+static int	ft_applyinst(char *line, t_stack **a, t_stack **b)
 {
 	if (ft_strcmp(line, "sa\n") == 0)
 		sabonus(a);
@@ -48,6 +62,9 @@ static void	ft_applyinst(char *line, t_stack **a, t_stack **b)
 		rrbbonus(b);
 	else if (ft_strcmp(line, "rrr\n") == 0)
 		rrr(a, b);
+	else
+		return (0);
+	return (1);
 }
 
 int	main(int ac, char **av)
@@ -59,22 +76,22 @@ int	main(int ac, char **av)
 	stackb = NULL;
 	stack = ft_parse(ac, av);
 	if (!stack)
-	{
-		stack_frier(&stack);
 		return (write(2, "Error\n", 6), 0);
-	}
-	if (is_sorted(stack))
-		return (stack_frier(&stack), 0);
 	line = get_next_line(0);
 	while (line)
 	{
-		ft_applyinst(line, &stack, &stackb);
+		if (!ft_applyinst(line, &stack, &stackb))
+		{
+			error(line, &stack, &stackb);
+			return (0);
+		}
 		free(line);
 		line = get_next_line(0);
 	}
-	if (is_sorted(stack))
+	if (is_sorted(stack) && !stackb)
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");
-	return (stack_frier(&stack), 0);
+	stack_frier(&stack);
+	return (0);
 }
