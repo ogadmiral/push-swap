@@ -6,37 +6,30 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 17:43:31 by mdamouh           #+#    #+#             */
-/*   Updated: 2026/01/05 20:37:58 by mdamouh          ###   ########.fr       */
+/*   Updated: 2026/01/05 21:37:06 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*ft_stack(char	**array)
+t_stack	*ft_stack(char **array)
 {
 	int		i;
 	int		value;
-	int		time;
 	t_stack	*head;
 	t_stack	*node;
 
 	i = 0;
-	time = 1;
+	head = NULL;
 	while (array[i])
 	{
 		if (!handle_overflow(array[i]))
-			return (NULL);
+			return (stack_frier(&head), NULL);
 		value = ft_atoi(array[i++]);
-		if (time == 1)
-		{
-			head = ft_lstnew(value);
-			time = 0;
-		}
-		else
-		{
-			node = ft_lstnew(value);
-			ft_lstadd_back(&head, node);
-		}
+		node = ft_lstnew(value);
+		if (!node)
+			return (stack_frier(&head), NULL);
+		ft_lstadd_back(&head, node);
 	}
 	return (head);
 }
@@ -86,27 +79,16 @@ t_stack	*nums_to_stack(int ac, char **av)
 
 t_stack	*get_numbers(int ac, char **av)
 {
-	int		i;
-	t_stack	*stack;
+	int	i;
 
 	i = 1;
 	while (i < ac)
 	{
-		if (!av[i][0])
+		if (!av[i][0] || is_only_spaces(av[i]) || !check_arg(av[i]))
 			return (NULL);
-		while (av[i])
-		{
-			if (!check_arg(av[i]))
-				return (NULL);
-			if (is_only_spaces(av[i]))
-				return (NULL);
-			if (!handle_overflow(av[i]))
-				return (NULL);
-			i++;
-		}
+		i++;
 	}
-	stack = nums_to_stack(ac, av);
-	return (stack);
+	return (nums_to_stack(ac, av));
 }
 
 t_stack	*ft_parse(int ac, char **av)
