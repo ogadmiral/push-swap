@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 15:47:17 by mdamouh           #+#    #+#             */
-/*   Updated: 2026/01/08 10:40:00 by mdamouh          ###   ########.fr       */
+/*   Updated: 2026/01/08 11:40:42 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	rrr(t_stack **a, t_stack **b);
 //parsing
 int		ft_is_space(char c);
 void	error_exit(void);
-void	handle_overflow(int sign, long result);
+int		handle_overflow(int sign, long *result, char *s);
+void	free_split(char **split, int *numbers);
 
 #endif

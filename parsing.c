@@ -6,13 +6,13 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 17:43:31 by mdamouh           #+#    #+#             */
-/*   Updated: 2026/01/08 10:51:47 by mdamouh          ###   ########.fr       */
+/*   Updated: 2026/01/08 11:40:28 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static long	ft_atol_strict(char *s)
+static int	ft_atol_strict(char *s, int *out)
 {
 	long	result;
 	int		sign;
@@ -25,20 +25,16 @@ static long	ft_atol_strict(char *s)
 		i++;
 	if (s[i] == '+' || s[i] == '-')
 	{
-		sign = (s[i] == '-') * -1 + (s[i] == '+');
+		if (s[i] == '-')
+			sign *= -1;
 		i++;
 	}
 	if (!ft_isdigit(s[i]))
-		error_exit();
-	while (s[i])
-	{
-		if (!ft_isdigit(s[i]))
-			error_exit();
-		result = result * 10 + (s[i] - '0');
-		handle_overflow(sign, result);
-		i++;
-	}
-	return (result * sign);
+		return (0);
+	if (!handle_overflow(sign, &result, s + i))
+		return (0);
+	*out = result * sign;
+	return (1);
 }
 
 static int	check_duplicates(int *arr, int size)
@@ -80,7 +76,8 @@ int	*parse_args(int argc, char **argv, int *k)
 		j = 0;
 		while (split[j])
 		{
-			numbers[(*k)++] = (int)ft_atol_strict(split[j]);
+			if (!ft_atol_strict(split[j], &numbers[(*k)++]))
+				free_split(split, numbers);
 			free(split[j++]);
 		}
 		free(split);
