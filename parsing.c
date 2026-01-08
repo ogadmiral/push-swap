@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 17:43:31 by mdamouh           #+#    #+#             */
-/*   Updated: 2026/01/08 11:40:28 by mdamouh          ###   ########.fr       */
+/*   Updated: 2026/01/08 21:12:17 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	*parse_args(int argc, char **argv, int *k)
 	while (i < argc)
 	{
 		if (!count_words(argv[i]))
-			error_exit();
+			return (free(numbers), error_exit(), NULL);
 		split = ft_split(argv[i]);
 		j = 0;
 		while (split[j])
