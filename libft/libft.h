@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 23:36:47 by mdamouh           #+#    #+#             */
-/*   Updated: 2025/12/31 21:45:26 by mdamouh          ###   ########.fr       */
+/*   Updated: 2026/01/08 10:18:05 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@ typedef struct s_list
 char	*ft_strdup(const char *s);
 long	ft_atoi(const char *str);
 // Part 2
-char	**ft_split(char const *s, char c);
+char	**ft_split(char *s);
+int		count_words(char *s);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+int		count_total_numbers(int argc, char **argv);
 // Bonus
 t_stack	*ft_lstnew(int value);
 void	ft_lstadd_front(t_stack **lst, t_stack *new);

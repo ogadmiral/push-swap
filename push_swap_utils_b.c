@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 15:57:06 by mdamouh           #+#    #+#             */
-/*   Updated: 2026/01/05 20:35:37 by mdamouh          ###   ########.fr       */
+/*   Updated: 2026/01/08 10:39:01 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,4 @@ void	rrb(t_stack **stack)
 	last->next = *stack;
 	*stack = last;
 	ft_printf("rrb\n");
-}
-
-int	handle_overflow(char *arr)
-{
-	if (ft_strlen(arr) > 11)
-		return (0);
-	if (ft_atoi(arr) > 2147483647 || ft_atoi(arr) < -2147483648)
-		return (0);
-	return (1);
 }
