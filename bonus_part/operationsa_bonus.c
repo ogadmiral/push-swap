@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations_a.c                                     :+:      :+:    :+:   */
+/*   operationsa_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/01 10:18:37 by mdamouh           #+#    #+#             */
-/*   Updated: 2026/01/05 21:01:20 by mdamouh          ###   ########.fr       */
+/*   Updated: 2026/01/08 20:49:38 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "bonus.h"
+#include "checker_bonus.h"
 
 void	pabonus(t_stack **stackb, t_stack **stacka)
 {
