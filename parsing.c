@@ -6,7 +6,7 @@
 /*   By: mdamouh <mdamouh@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 17:43:31 by mdamouh           #+#    #+#             */
-/*   Updated: 2026/01/08 10:41:59 by mdamouh          ###   ########.fr       */
+/*   Updated: 2026/01/08 10:51:47 by mdamouh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ int	*parse_args(int argc, char **argv, int *k)
 	if (!numbers)
 		return (NULL);
 	i = 1;
-	k = 0;
 	while (i < argc)
 	{
 		if (!count_words(argv[i]))
@@ -114,6 +113,7 @@ t_stack	*ft_parse(int ac, char **av)
 	int		size;
 	t_stack	*stack;
 
+	size = 0;
 	numbers = parse_args(ac, av, &size);
 	if (check_duplicates(numbers, size))
 		return (free(numbers), NULL);
