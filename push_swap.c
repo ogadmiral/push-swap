@@ -82,6 +82,8 @@ int	main(int ac, char **av)
 	t_stack	*stackb;
 
 	stackb = NULL;
+	if (ac < 2)
+		return (0);
 	stack = ft_parse(ac, av);
 	size = ft_lenlst(stack);
 	if (!stack)
@@ -98,6 +100,5 @@ int	main(int ac, char **av)
 		return (small_sort(stack, stackb, size), 0);
 	ft_buildb(&stack, &stackb);
 	ft_build_fromb(&stackb, &stack);
-	stack_frier(&stack);
-	return (0);
+	return (stack_frier(&stack), 0);
 }
