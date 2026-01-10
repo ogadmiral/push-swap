@@ -93,5 +93,5 @@ int	main(int ac, char **av)
 	else
 		ft_printf("KO\n");
 	stack_frier(&stack);
-	return (0);
+	return (stack_frier(&stackb), 0);
 }
